@@ -1,0 +1,42 @@
+﻿
+@model IEnumerable<ET.Jugadores>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Agregar", "Insert")
+</p>
+<table class="table">
+    <tr>
+        <th>@Html.Label("id")</th>
+        
+        <th>@Html.Label("nombre")</th>
+        <th> @Html.Label("Edad") </th>
+        <th> @Html.Label("Opciones") </th>
+    </tr>
+
+@foreach (var item in Model) {
+        
+    <tr>
+        <td>
+            @Html.Label(item.id.ToString())
+        </td>
+        <td>
+            @Html.Label(item.nombre)
+        </td>
+        <td>
+            @Html.Label(item.Edad.ToString())
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Actualizar", new {  id=item.id }) |
+            @Html.ActionLink("Delete", "EstaSeguro", new {  id=item.id})
+        </td>
+    </tr>
+}
+
+</table>
